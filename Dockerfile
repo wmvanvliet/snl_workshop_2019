@@ -36,6 +36,10 @@ RUN pip install RISE && \
     jupyter nbextension enable rise --py --sys-prefix &&\
     npm cache clean --force
 
+# Install Mayavi extension
+RUN jupyter nbextension install mayavi --py --sys-prefix &&\
+    jupyter nbextension enable mayavi --py --sys-prefix
+
 USER root
 
 RUN apt-get install -yq --no-install-recommends \
@@ -66,8 +70,7 @@ RUN pip install ipywidgets && \
 
 RUN git init . && \
     git remote add origin https://github.com/wmvanvliet/snl_workshop_2019.git && \
-    git fetch origin master && \
-    git checkout master
+    git pull origin master
 
 RUN ipython -c "import mne; print(mne.datasets.sample.data_path(verbose=False))"
 
