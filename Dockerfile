@@ -56,7 +56,7 @@ RUN pip install RISE && \
     jupyter nbextension install rise --py --sys-prefix &&\
     jupyter nbextension enable rise --py --sys-prefix &&\
     jupyter nbextension install mayavi --py --sys-prefix &&\
-    jupyter nbextension enable mayavi --py --sys-prefix
+    jupyter nbextension enable mayavi --py --sys-prefix &&\
     npm cache clean --force
 
 # ********* Download sample data ****************
