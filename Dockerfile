@@ -41,7 +41,7 @@ RUN pip install vtk && \
     pip install pillow && \
     pip install scikit-learn && \
     pip install nibabel && \
-    pip install https://github.com/wmvanvliet/PySurfer/archive/notebook.zip && \
+    pip install https://github.com/nipy/PySurfer/archive/master.zip && \
     pip install mne
 
 # Install Jupyter notebook extensions
