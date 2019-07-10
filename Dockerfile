@@ -38,6 +38,7 @@ RUN pip install vtk && \
     pip install xvfbwrapper && \
     pip install mayavi && \
     pip install ipywidgets && \
+    pip install ipyevents && \
     pip install pillow && \
     pip install scikit-learn && \
     pip install nibabel && \
