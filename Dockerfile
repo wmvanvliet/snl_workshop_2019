@@ -61,5 +61,8 @@ RUN git init . && \
 # Download the MNE-sample dataset
 RUN ipython -c "import mne; print(mne.datasets.sample.data_path(verbose=False))"
 
+# Configure the MNE raw browser window to use the full width of the notebook
+RUN ipython -c "import mne; mne.set_config('MNE_BROWSE_RAW_SIZE', '9.8, 7')"
+
 # Add an x-server to the entrypoint. This is needed by Mayavi
 ENTRYPOINT ["tini", "-g", "--", "xvfb-run"] 
