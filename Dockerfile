@@ -62,7 +62,7 @@ RUN git init . && \
     git pull origin master
 
 # Download a minimized verion of the MNE-sample dataset
-ADD https://github.com/wmvanvliet/snl_workshop_2019/releases/download/0.1/sample-min.zip sample-min.zip
+RUN wget "https://github.com/wmvanvliet/snl_workshop_2019/releases/download/0.1/sample-min.zip" -O sample-min.zip
 RUN unzip sample-min.zip -d notebooks/data
 RUN rm sample-min.zip
 
