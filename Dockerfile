@@ -53,16 +53,18 @@ RUN pip install RISE && \
     jupyter nbextension enable mayavi --py --sys-prefix && \
     npm cache clean --force
 
-# Clone the repository
+# Clone the repository. First fetch the hash of the latest commit, which will
+# invalidate docker's cache when new things are pushed to the repository. See:
+# https://stackoverflow.com/questions/36996046
+ADD https://api.github.com/repos/wmvanvliet/snl_workshop_2019/git/refs/heads/master version.json
 RUN git init . && \
     git remote add origin https://github.com/wmvanvliet/snl_workshop_2019.git && \
     git pull origin master
 
 # Download a minimized verion of the MNE-sample dataset
-RUN wget "https://github.com/wmvanvliet/snl_workshop_2019/releases/download/0.1/sample-min.zip" -O sample-min.zip
+ADD https://github.com/wmvanvliet/snl_workshop_2019/releases/download/0.1/sample-min.zip
 RUN unzip sample-min.zip -d notebooks/data
 RUN rm sample-min.zip
-#RUN ipython -c "import mne; print(mne.datasets.sample.data_path(verbose=False))"
 
 # Configure the MNE raw browser window to use the full width of the notebook
 RUN ipython -c "import mne; mne.set_config('MNE_BROWSE_RAW_SIZE', '9.8, 7')"
